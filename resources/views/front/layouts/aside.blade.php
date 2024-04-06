@@ -19,28 +19,27 @@
         <li><a class="text-decoration-none" href="{{route('createFilm')}}">Film Ekle</a></li>
     </ul>
 
-
+    @if(\Illuminate\Support\Facades\Auth::check())
     <hr>
     <div class="dropdown">
         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-            <strong>mdo</strong>
+            <strong>{{\Illuminate\Support\Facades\Auth::user()->name}}</strong>
         </a>
+
+
         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-
-
-               <li><a href="{{route('profile.show')}}">Profile</a></li>
+               <li><a href="{{route('profile.show')}}" class="text-white ps-2 text-decoration-none underline">Profile</a></li>
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                 <li><a href="{{ route('api-tokens.index') }}">Api Tokens</a></li>
                 @endif
-
-
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button>Log Out</button>
+                        <a href="javascript:;" onclick="parentNode.submit();" class="text-white ps-2 text-decoration-none underline">Log Out</a>
                     </form></li>
         </ul>
     </div>
+    @endif
 </div>
