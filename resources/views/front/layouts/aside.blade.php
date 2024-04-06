@@ -27,11 +27,20 @@
             <strong>mdo</strong>
         </a>
         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
+
+
+               <li><a href="{{route('profile.show')}}">Profile</a></li>
+
+                @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                <li><a href="{{ route('api-tokens.index') }}">Api Tokens</a></li>
+                @endif
+
+
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a href="{{route('logout')}}" @click.prevent="$root.submit();">Log Out</a>
+                    </form></li>
         </ul>
     </div>
 </div>
