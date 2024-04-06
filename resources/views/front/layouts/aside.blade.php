@@ -39,7 +39,7 @@
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <a href="{{route('logout')}}" @click.prevent="$root.submit();">Log Out</a>
+                        <button>Log Out</button>
                     </form></li>
         </ul>
     </div>

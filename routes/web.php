@@ -28,5 +28,6 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-
+        //Kullanıcı giriş yapınca burası açılıyor
+    Route::get('/dashboard', [FilmController::class,'anaSayfa'])->name('dashboard');
 });
