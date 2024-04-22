@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Film;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FilmController extends Controller
 {
@@ -13,6 +15,25 @@ class FilmController extends Controller
         return view('front.films.index',compact('movies'));
 
     }
+
+    public function addFavourite(Request $request)
+    {
+        $user =Auth::user();
+
+        if(!$user->films->contains($request->movie)){
+            $user->films()->attach($request->movie);
+        }
+
+        return redirect()->back();
+    }
+
+    public function indexFavoutire()
+    {
+        $movies =Auth::user()->films()->paginate(15);
+
+        return view('front.films.index',compact('movies'));
+    }
+
 
 
     public function category($ByCategory)

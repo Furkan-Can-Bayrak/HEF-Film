@@ -34,6 +34,8 @@
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                 <li><a href="{{ route('api-tokens.index') }}">Api Tokens</a></li>
                 @endif
+            <li><a href="{{route('indexFavourite')}}" class="text-white ps-2 text-decoration-none underline">Favori Filmlerim</a></li>
+
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
