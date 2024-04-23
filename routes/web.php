@@ -29,5 +29,5 @@ Route::middleware([
     Route::get('/createFilm',[FilmController::class,'create'])->name('createFilm');
     Route::get('/indexFavourite',[FilmController::class,'indexFavoutire'])->name('indexFavourite');
     Route::post('/add-favourite',[FilmController::class,'addFavourite'])->name('addFavourite');
-
+    Route::delete('/remove-favourite',[FilmController::class,'removeFavourite'])->name('removeFavourite');
 });

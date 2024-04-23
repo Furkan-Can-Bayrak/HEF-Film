@@ -14,8 +14,9 @@
 
     @if(\Illuminate\Support\Facades\Auth::check())
       @if(\Illuminate\Support\Facades\Auth::user()->films->contains($movie->id))
-          <form method="post" action="">
+          <form method="post" action="{{route('removeFavourite')}}">
               @csrf
+              @method('DELETE')
               <input type="hidden" name="movie" value="{{$movie->id}}">
               <button class="btn btn-warning"> Favorilerden Çıkar </button>
           </form>

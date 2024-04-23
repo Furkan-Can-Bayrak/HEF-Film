@@ -35,6 +35,18 @@ class FilmController extends Controller
     }
 
 
+    public function removeFavourite(Request $request)
+    {
+        $film =Film::find($request->movie);
+        $user = Auth::user();
+
+        $user->films()->detach($film->id);
+
+        return redirect()->back();
+
+
+    }
+
 
     public function category($ByCategory)
     {
